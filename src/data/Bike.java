@@ -18,10 +18,9 @@ public class Bike {
      * @param name  the name
      * @param model the model
      */
-    public Bike(String name, String model, String year) {
+    public Bike(String name, String model) {
         this.name = name;
         this.model = model;
-	this.year = year;
     }
 
     /**
@@ -67,9 +66,9 @@ public class Bike {
  *
  **/
     public void setYear(String year){
-        this.year = year; 
+        this.year = year;
    }
-    
+
 
     @Override
     public String toString() {
