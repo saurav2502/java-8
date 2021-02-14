@@ -1,6 +1,7 @@
 /*
  * Copyright for Test.java by kumar since 8/16/20, 12:42 AM
  */
+package test;
 
 import java.math.BigDecimal;
 import java.util.Arrays;

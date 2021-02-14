@@ -5,6 +5,9 @@
 package thread;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.RunnableFuture;
 
 /**
  * @author kumar
@@ -39,13 +42,24 @@ public class FutureFeature {
         //cf.complete(2);
         //cf.completeExceptionally(new RuntimeException("some thing wrong"));
         //System.out.println(cf.completeAsync(supplier));
-        create(2).thenCompose(data -> create(data))
-        .thenAccept(System.out::println);
+        /*create(2).thenCompose(data -> create(data))
+        .thenAccept(System.out::println);*/
+        RunnableFuture runnableFuture = new FutureTask<Boolean>(() -> {System.out.println("inside call");
+            return false;
+        });
+        new Thread(runnableFuture).start();
+        try {
+            System.out.println("future result " + runnableFuture.get());
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 
     private static CompletableFuture<Integer> create(int data) {
         return CompletableFuture.supplyAsync(() -> data);
     }
+
+
 
 
 }
